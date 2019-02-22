@@ -1,0 +1,47 @@
+{
+    "name": "Shoosuva",
+    "armor_class": "14",
+    "hit_points": "110",
+    "speed": "40 ft.",
+    "size": "Large",
+    "type": "fiend",
+    "subtype": "demon",
+    "alignment": "chaotic evil",
+    "strength": "18",
+    "dexterity": "13",
+    "constitution": "17",
+    "intelligence": "7",
+    "wisdom": "14",
+    "charisma": "9",
+    "challenge_rating": "8",
+    "special_actions": [
+        {
+            "name": "Rampage.",
+            "desc": " When it reduces a creature to 0 hit points with a melee attack on its turn, the shoosuva can take a bonus action to move up to half its speed and make a bite attack.",
+            "attack_bonus": 0
+        }
+    ],
+    "actions": [
+        {
+            "name": "Multiattack.",
+            "desc": " The shoosuva makes two attacks: one with its bite and one with its tail stinger.",
+            "attack_bonus": 0
+        },
+        {
+            "name": "Bite.",
+            "desc": " Melee Weapon Attack: +7 to hit, reach 5 ft, one target. Hit: 26 (4d10+4) piercing damage.",
+            "attack_bonus": 0
+        },
+        {
+            "name": "Tail Stinger.",
+            "desc": " Melee Weapon Attack: +7 to hit, reach 15 ft, one creature. Hit: 13 (2d8+4) piercing damage, and the target must succeed on a DC 14 Constitution saving throw or become poisoned. While poisoned, the target is also paralyzed. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+            "attack_bonus": 0
+        }
+    ],
+    "dexterity_save": "4",
+    "constitution_save": "6",
+    "wisdom_save": "5",
+    "damage_reistances": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+    "senses": "darkvision 60 ft.",
+    "languages": "Abyssal, Gnoll, telepathy 120 ft."
+}

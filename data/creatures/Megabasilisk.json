@@ -1,0 +1,68 @@
+{
+    "name": "Megabasilisk",
+    "size": "Huge",
+    "type": "monstrosity",
+    "subtype": "",
+    "alignment": "unaligned",
+    "armor_class": 18,
+    "hit_points": 189,
+    "hit_dice": "18d12 + 72",
+    "speed": "30 ft., swim 15 ft.",
+    "strength": 24,
+    "dexterity": 8,
+    "constitution": 19,
+    "intelligence": 2,
+    "wisdom": 12,
+    "charisma": 11,
+    "senses": "darkvision 60 ft., passive Perception 11",
+    "languages": ".",
+    "challenge_rating": "6",
+    "special_abilities": [
+      {
+        "Petrifying Gaze": "If a creature starts its turn within 60 feet of the megabasil and the two of them can see each other, the megabasil can force the creature to make a DC 14 Constitution saving throw if the megabasil isn’t incapacitated. On a failed save, the creature magically begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified for 24 hours A creature that isn’t surprised can avert its eyes to avoid the saving throw at the start of its turn. If it does so, it can’t see the megabasil until the start of its next turn, when it can avert its eyes again. If it looks at the megabasil in the meantime, it must immediately make the save If the megabasil sees its reflection with 60 feet of it in bright light, it mistakes itself for a rival and targets itself with its gaze."
+      }
+    ],
+    "actions": [
+        {
+            "name": "Multiattack",
+            "desc": "The megabasil makes two attacks, one with its bite and one with its tail..",
+            "attack_bonus": 0
+        },
+        {
+            "name": "Bite",
+            "desc": "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 18 (2d10 + 7) piercing damage plus 14 (4d6) poison damage.",
+            "attack_bonus": 9,
+            "damage_dice": "2d6",
+            "damage_bonus": 5
+        },
+        {
+            "name": "Tail",
+            "desc": "Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 11 (1d8 + 7) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone.",
+            "attack_bonus": 9,
+            "damage_dice": "3d6",
+            "damage_bonus": 5
+        },
+        {
+            "name": "Enslave (3/day)",
+            "desc": "The aboleth targets one creature it can see within 30 ft. of it. The target must succeed on a DC 14 Wisdom saving throw or be magically charmed by the aboleth until the aboleth dies or until it is on a different plane of existence from the target. The charmed target is under the aboleth's control and can't take reactions, and the aboleth and the target can communicate telepathically with each other over any distance.\nWhenever the charmed target takes damage, the target can repeat the saving throw. On a success, the effect ends. No more than once every 24 hours, the target can also repeat the saving throw when it is at least 1 mile away from the aboleth.",
+            "attack_bonus": 0
+        }
+    ],
+    "legendary_actions": [
+        {
+            "name": "Detect",
+            "desc": "The aboleth makes a Wisdom (Perception) check.",
+            "attack_bonus": 0
+        },
+        {
+            "name": "Tail Swipe",
+            "desc": "The aboleth makes one tail attack.",
+            "attack_bonus": 0
+        },
+        {
+            "name": "Psychic Drain (Costs 2 Actions)",
+            "desc": "One creature charmed by the aboleth takes 10 (3d6) psychic damage, and the aboleth regains hit points equal to the damage the creature takes.",
+            "attack_bonus": 0
+        }
+    ]
+}

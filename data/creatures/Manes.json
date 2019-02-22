@@ -1,0 +1,28 @@
+{
+    "name": "Manes",
+    "armor_class": "9",
+    "hit_points": "9",
+    "speed": "20 ft.",
+    "size": "Small",
+    "type": "fiend",
+    "subtype": "demon",
+    "alignment": "chaotic evil",
+    "strength": "10",
+    "dexterity": "9",
+    "constitution": "13",
+    "intelligence": "3",
+    "wisdom": "8",
+    "charisma": "4",
+    "challenge_rating": "1/8",
+    "special_actions": [],
+    "actions": [
+        {
+            "name": "Claws.",
+            "desc": " Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 5 (2d4) slashing damage.",
+            "attack_bonus": 0
+        }
+    ],
+    "damage_reistances": "cold, fire, lightning",
+    "senses": "darkvision 60 ft.",
+    "languages": "understands Abyssal but can\u2019t speak"
+}
