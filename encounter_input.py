@@ -1,11 +1,12 @@
-import encounter_generator
 import random
-import json
+import load
+import creature
 
 help_msg = """
 (s) show displays the encounter again
 (d) damage <to> <amount> deals damage to the specified creature
 (h) heal <to> <amount> heals the specified creature
+(a) add <creature name> to add the creature to the encounter
 (u) undo undoes the last action
 (E) end ends the encounter with prompt
 (R) roll <dice> should roll a dice in the format of <amnt>d<eyes>
@@ -14,7 +15,7 @@ help_msg = """
 (help, ?) shows help dialog
 """
 
-short_help = "(s)how, (d)amage, (h)eal, (u)ndo, (E)nd, (R)oll, (n)ext, more #, (?)"
+short_help = "(s)how, (d)amage, (h)eal, (u)ndo, (a) add, (E)nd, (R)oll, (n)ext, more #, (?)"
 
 
 def promptYN(msg="are you sure?[y/N] "):
@@ -25,14 +26,14 @@ def promptYN(msg="are you sure?[y/N] "):
 
 def read_unitl_int_greater0():
     try:
-        x = input()
+        x = input().strip()
         x = int(x)
         if x < 0:
-            read_unitl_int_greater0()
+            x = read_unitl_int_greater0()
         return x
     except Exception as e:
         print("input must be a number > 0")
-        read_unitl_int_greater0()
+        return read_unitl_int_greater0()
 
 
 class EncounterInput:
@@ -84,7 +85,7 @@ class EncounterInput:
             _, to, amnt = io
             to = int(to) - 1
             amnt = int(amnt)
-            self.encounter.active_creatures[to] -= amnt
+            self.encounter.active_creatures[to].current_hp -= amnt
         else:
             print("damage needs 2 arguments in the form <to> <damage>")
 
@@ -93,13 +94,13 @@ class EncounterInput:
             _, to, amnt = io
             to = int(to) - 1
             amnt = int(amnt)
-            self.encounter.active_creatures[to] += amnt
+            self.encounter.active_creatures[to].current_hp += amnt
         else:
             print("damage needs 2 arguments in the form <to> <damage>")
 
     def undo(self, io):
         if promptYN():
-            print("undoing")
+            print("WORK IN PROGRESS undoing")
         else:
             print("continue ..")
 
@@ -134,6 +135,34 @@ class EncounterInput:
         else:
             raise IndexError("invalid format should be 'more <ID>' of monster")
 
+    def add_hero(self, words):
+        print("hero creation is not supported as of now")
+        # TODO: create a creature here and add it to the encounter
+
+    def add(self, io):
+        """
+        this is really hackish but it works so eh
+        """
+        if len(io) <= 1:
+            print("no creature name")
+            return
+        words = io[1:]
+        creature_name = str.join(" ", words)
+        if words[0].lower() == "hero":
+            return self.add_hero(words)
+
+        monsters = load.load_files()
+        while True:
+            found_monster = monsters.search(creature_name)
+            _, key, _, _ = found_monster
+            found_monster = creature.Creature.load_from_name(key)
+            if promptYN("do you want to add " + str(found_monster.name) + " [y/N]"):
+                self.encounter.active_creatures += [found_monster]
+                initiative = int(input("enter initiative for: {}".format(found_monster.name)))
+                found_monster.current_initiative = initiative
+                return
+
+
     def help(self, io):
         print(help_msg)
 
@@ -161,6 +190,7 @@ class EncounterInput:
             ["R", "roll", self.roll],
             ["n", "next", self.next],
             ["m", "more", self.more],
+            ["add", "a", self.add],
             ["help", "?", self.help]
         ]
         try:

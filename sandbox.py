@@ -12,6 +12,10 @@ def main():
         load.load_files(),
         encounter_generator.Encounter.load(enc[enc_num])
     )
+    if len(playable_encounter.active_creatures) == 0:
+        print("the encounter does not contain any monsters, exiting ... ")
+        return
+
     display = encounter_display.Display(playable_encounter)
     inp = encounter_input.EncounterInput(playable_encounter, display)
     while not inp.ended:

@@ -1,5 +1,5 @@
 import json
-
+import constants
 
 class Creature:
 
@@ -23,6 +23,12 @@ class Creature:
         self.current_initiative = 0
         self.is_turn = False
         self.complete_data = json_data
+
+    @staticmethod
+    def load_from_name(name):
+        path = constants.CREATURE_DIR + "/" + name + ".json"
+        with open(path) as f:
+            return Creature(json.load(f))
 
     def clone(self):
         c = Creature(self.complete_data)

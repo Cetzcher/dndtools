@@ -20,6 +20,10 @@ DIMENSIONS = {
 # (5) now create multiple pages from the image an A4 page is 8.27 x 11.69 inches
 
 
+def is_white_page(img):
+    return img.convert("L").getextrema() == (1, 1)
+
+
 def flood_fill(data, size, start, expected=(0, 0, 0), fill=(255, 255,255)):
     # start should be x, y
     x, y = start
@@ -91,6 +95,7 @@ def subdivide_image(image, desired_dpi, size, format):
 
 
 def create_pdf(images, outdir, desired_dpi=300, page_numbers=True):
+    images = [(im, i, j) for im, i, j in images if not is_white_page(im)]
     if page_numbers:
         for p in images:
             image, i, j = p

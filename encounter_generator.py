@@ -1,6 +1,8 @@
 import json
 import constants
 from creature import Creature
+import helper
+
 
 def make_test_ecnoutner():
     import load
@@ -75,6 +77,10 @@ def generate_ecnounter_io():
     monsters = load.load_files()
     added_creatures = []
     e_name = input("enter an encounter name [do not include '/', '\\']: ")
+    if not helper.check_path_valid(e_name):
+        print("the name you entered is not a valid filename")
+        return
+
     inp = ""
     while inp != "!":
         cur_encounter = Encounter(e_name, added_creatures)

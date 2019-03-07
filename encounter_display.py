@@ -1,6 +1,7 @@
 import encounter_generator
 import load
 
+
 class Display:
 
     def __init__(self, playable_encounter):
